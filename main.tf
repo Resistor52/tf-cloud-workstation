@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 
   filter {
@@ -78,7 +78,7 @@ resource "aws_route_table_association" "work-rta" {
 }
 
 resource "aws_security_group" "work-sg" {
-  name   = "terraform-example-sg"
+  name   = "work-sg"
   vpc_id = aws_vpc.work-vpc.id
 }
 
@@ -111,11 +111,11 @@ resource "aws_security_group_rule" "allow_all" {
 
 resource "aws_instance" "workstation1" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t3a.xlarge"
   key_name               = "ken-aws1-pers"
   vpc_security_group_ids = [aws_security_group.work-sg.id]
   subnet_id              = aws_subnet.work-subnet.id
-  user_data              = file("setup_workstation1.sh")
+  user_data              = file("workstation1.sh")
   tags = {
     Name = "workstation1"
   }
