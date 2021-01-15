@@ -33,7 +33,7 @@ DEBIAN_FRONTEND=noninteractive /usr/bin/apt upgrade -y >> /tmp/first-boot.log 2>
 /usr/bin/mkdir /home/resistor/Desktop >> /tmp/first-boot.log 2>&1
 /usr/bin/chown resistor:resistor /home/resistor/Desktop >> /tmp/first-boot.log 2>&1
 /usr/bin/ls -als /home/resistor/Desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/sed -i '/^resistor.*$/c\resistor:$6$pD6LIiiNShwPiYN8$rV7x9pXoS4oFS5GiFN9ZENyXVTc9Y78cUIaoyXOh3..UUwyCrBRAXhS9uMVPb60FwiUMhDgzPbvkLfqLCy4eg.:18641:0:99999:7:::' /etc/shadow
+/bin/echo 'resistor:ChangeMe' | /usr/sbin/chpasswd 
 /bin/echo "***** Create Firefox Launcher *****" >> /tmp/first-boot.log
 /usr/bin/cat << EOF > /home/resistor/Desktop/Firefox.desktop
 #!/usr/bin/env xdg-open
@@ -81,6 +81,6 @@ Name=Terminal
 EOF
 /usr/bin/cat /home/resistor/Desktop/Terminal.desktop >> /tmp/first-boot.log
 /usr/bin/chown resistor:resistor /home/resistor/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
-/usr/bin/chmod 775 /home/resistor/Desktop/Chrome.desktop >> /tmp/first-boot.log 2>&1
+/usr/bin/chmod 775 /home/resistor/Desktop/Terminal.desktop >> /tmp/first-boot.log 2>&1
 /bin/echo "*****DONE*****" >> /tmp/first-boot.log
 /usr/bin/wall "NOTICE: First Boot Setup Has Completed"

@@ -136,6 +136,18 @@ resource "aws_instance" "workstation1" {
   }
 }
 
-output "ssh_output" {
+output "ssh_connection_string" {
   value = "ssh -i ${var.aws_pem} ubuntu@${aws_instance.workstation1.public_ip}"
+}
+
+output "RDP_address" {
+  value = aws_instance.workstation1.public_ip
+}
+
+output "RDP_UserName" {
+  value = "resister"
+}
+
+output "RDP_Password" {
+  value = "ChangeMe"
 }

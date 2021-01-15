@@ -1,0 +1,4 @@
+aws_pem = "YOUR_PEM_FILE.pem"
+aws_region = "us-east-1"
+aws_creds_file = "/home/USER/.aws/credentials"
+aws_profile = "YOUR_PROFILE"
