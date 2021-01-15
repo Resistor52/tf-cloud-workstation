@@ -1,8 +1,23 @@
-# Provider
+variable "aws_region" {
+  description = "The AWS region to deploy the resources to"
+}
+
+variable "aws_creds_file" {
+  description = "The full path to the .aws/credentials file"
+}
+
+variable "aws_profile" {
+  description = "The profile in the credentials tile to use"
+}
+
+variable "aws_pem" {
+  description = "The PEM file to use for SSH. This is outputted with the IP for convenience"
+}
+
 provider "aws" {
-  region                  = "us-east-1"
-  shared_credentials_file = "/home/ken/.aws/credentials"
-  profile                 = "ken-aws1"
+  region                  = var.aws_region
+  shared_credentials_file = var.aws_creds_file
+  profile                 = var.aws_profile
 }
 
 
@@ -121,6 +136,6 @@ resource "aws_instance" "workstation1" {
   }
 }
 
-output "workstation1_public_ip" {
-  value = aws_instance.workstation1.public_ip
+output "ssh_output" {
+  value = "ssh -i ${var.aws_pem} ubuntu@${aws_instance.workstation1.public_ip}"
 }
