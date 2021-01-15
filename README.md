@@ -25,7 +25,8 @@ terraform apply
 Obviously, this assumes that you have both `git` and `terraform` installed.
 
 ## USAGE
-The cloud workstation can be accessed via either SSH or RDP.
+The cloud workstation can be accessed via either SSH or RDP. The necessary information
+will be an output when the script is complete.
 
 
 ## ADDITIONAL NOTES
